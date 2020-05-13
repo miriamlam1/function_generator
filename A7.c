@@ -2,10 +2,16 @@
     UCB0SIMO = P1.6
     UCB0CLK = P1.5
 P4.1*/
-
+#include <math.h>
 #include "msp.h"
 #include "A7.h"
 #include "A5.h"
+#include "P2.h"
+
+void sawtooth(uint16_t current_freq){
+    data = (TIMER_A0->R * THREEV) / current_freq;
+    sendto_DAC(data);
+}
 
 void triangle(){
     if (global_toggle == 0){ //direction up
@@ -17,12 +23,22 @@ void triangle(){
     }
 }
 
+void sine(uint16_t current_freq){
+    if (global_toggle == 0){ //direction up
+        data = sin((TIMER_A0->R)/current_freq);
+        sendto_DAC(data);
+    } else {
+        data = sin((TIMER_A0->R)/current_freq);
+        sendto_DAC(data);
+    }
+}
+
 // generates a 2vpp square wave 20 ms period 1v offset
 void square(){
     if (global_toggle == 0){
         sendto_DAC(0);
     } else {
-        sendto_DAC(TWOV);
+        sendto_DAC(THREEV);
     }
 }
 
@@ -52,12 +68,10 @@ void sendto_DAC(uint16_t data){
     top8 |= (GAIN | SHDN);
 
     P4->OUT &= ~(NOTCS); //set CS bit low
-
     while (EUSCI_B0 -> IFG & EUSCI_B_IFG_TXIFG == 0);  //wait
     EUSCI_B0 -> TXBUF = top8; //transmit top8
     while (EUSCI_B0 -> IFG & EUSCI_B_IFG_TXIFG == 0);  //wait
     EUSCI_B0 -> TXBUF = lower8;
     while(EUSCI_B0 -> IFG & EUSCI_B_IFG_RXIFG == 0); //RXIFG is set when UCxxRXBUF has received a complete character
-
     P4->OUT |= (NOTCS); //set CS bit high
 }

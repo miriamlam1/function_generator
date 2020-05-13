@@ -23,7 +23,6 @@ main.obj: ../A7.h
 main.obj: ../A5.h
 main.obj: ../A4.h
 main.obj: ../P2.h
-main.obj: ../A7.h
 
 ../main.c: 
 C:/ti/ccs1000/ccs/ccs_base/arm/include/msp.h: 
@@ -48,4 +47,3 @@ C:/ti/ccs1000/ccs/ccs_base/arm/include/system_msp432p401r.h:
 ../A5.h: 
 ../A4.h: 
 ../P2.h: 
-../A7.h: 

@@ -19,6 +19,10 @@ P2.obj: C:/ti/ccs1000/ccs/ccs_base/arm/include/CMSIS/core_cm4.h
 P2.obj: C:/ti/ccs1000/ccs/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 P2.obj: C:/ti/ccs1000/ccs/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 P2.obj: C:/ti/ccs1000/ccs/ccs_base/arm/include/system_msp432p401r.h
+P2.obj: ../P2.h
+P2.obj: ../A7.h
+P2.obj: ../A5.h
+P2.obj: ../A4.h
 
 ../P2.c: 
 C:/ti/ccs1000/ccs/ccs_base/arm/include/msp.h: 
@@ -39,3 +43,7 @@ C:/ti/ccs1000/ccs/ccs_base/arm/include/CMSIS/core_cm4.h:
 C:/ti/ccs1000/ccs/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 C:/ti/ccs1000/ccs/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
 C:/ti/ccs1000/ccs/ccs_base/arm/include/system_msp432p401r.h: 
+../P2.h: 
+../A7.h: 
+../A5.h: 
+../A4.h: 

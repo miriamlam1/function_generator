@@ -13,8 +13,8 @@ void timer_A_init(){
     TIMER_A0->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
     TIMER_A0->CCTL[1] = TIMER_A_CCTLN_CCIE;
 
-    TIMER_A0->CCR[0] = 60000; // set CCR0 to divide clock 3,000,000/2/
-    TIMER_A0->CCR[1] = 45000;
+    TIMER_A0->CCR[0] = 60000;
+    TIMER_A0->CCR[1] = 30000; //45000 for 25% duty
 
     TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2 | // SMCLK
                     TIMER_A_CTL_MC_1;      // UP MODE
