@@ -15,29 +15,13 @@ void sawtooth(uint16_t current_freq){
     sendto_DAC(data);
 }
 
-void triangle(){
-    if (global_toggle == 0){ //direction up
-        data = (TIMER_A0->R * 2482) / 30000;
-        sendto_DAC(data);
-    } else {
-        data = 2482 - ((TIMER_A0->R * 2482) / 30000);
-        sendto_DAC(data);
-    }
-}
-
 void sine(uint16_t current_freq){
-    static uint16_t i = 0;
-    if (i < SINETABLESIZE){
-        sendto_DAC(volts_list[i]);
-        i += 150000/current_freq; // current hz / 10
-    } else {
-        i = 0;
-        sendto_DAC(volts_list[i]);
-    }
+    data = (TIMER_A0->R)/current_freq;
+    sendto_DAC(volts_list[data]);
 }
 
-void sine_list_maker()
-{
+// creates table of all values
+void sine_list_maker(){
     int i;
     int voltage;
     for(i = 0; i < SINETABLESIZE; i++)
@@ -53,6 +37,16 @@ void square(){
         sendto_DAC(0);
     } else {
         sendto_DAC(THREEV);
+    }
+}
+
+void triangle(){
+    if (global_toggle == 0){ //direction up
+        data = (TIMER_A0->R * 2482) / 30000;
+        sendto_DAC(data);
+    } else {
+        data = 2482 - ((TIMER_A0->R * 2482) / 30000);
+        sendto_DAC(data);
     }
 }
 
@@ -80,7 +74,6 @@ void sendto_DAC(uint16_t data){
     uint8_t top8 = 0x0F & (data >> 8);
     uint8_t lower8 = data & 0xFF;
     top8 |= (GAIN | SHDN);
-
     P4->OUT &= ~(NOTCS); //set CS bit low
     while (EUSCI_B0 -> IFG & EUSCI_B_IFG_TXIFG == 0);  //wait
     EUSCI_B0 -> TXBUF = top8; //transmit top8

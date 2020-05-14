@@ -11,12 +11,13 @@ void main()
     keypad_init();
     timer_A_init();
     DAC_init();
+    sine_list_maker();
+
     Waveform wave = {.current_freq = freq_100Hz,
-                     .duty_freq = freq_50Hz,
+                     .duty = .5,
                      .waveform = SQUARE
     };
 
-    sine_list_maker();
 
     uint8_t button;
     while(1){

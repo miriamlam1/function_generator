@@ -6,14 +6,14 @@
 #include "A5.h"
 #include "A4.h"
 
-#define freq_50Hz 30000 // 20 ms
-#define freq_100Hz 15000 // 10 ms
-#define freq_150Hz 10000
-#define freq_200Hz 7500 // 5 ms
-#define freq_250Hz 6000
-#define freq_300Hz 5000 // 3.333 ms
-#define freq_400Hz 3750 // 2.5 ms
-#define freq_500Hz 3000 // 2 ms
+/* equation to determine frequencies:
+ * 3,000,000/desiredfreq = CCR value
+ */
+#define freq_100Hz 30000 // 10 ms
+#define freq_200Hz 15000 // 5 ms
+#define freq_300Hz 10000 // 3.333 ms
+#define freq_400Hz 7500 // 2.5 ms
+#define freq_500Hz 6000 // 2 ms
 
 #define SQUARE 0
 #define SAWTOOTH 1
@@ -21,9 +21,9 @@
 
 typedef struct
 {
-   uint16_t current_freq;
-   uint16_t duty_freq;
-   uint8_t waveform;
+   uint16_t current_freq; // frequency that is #def as ccr value
+   uint8_t waveform; // waveform type: sq, saw, sine
+   float duty; // duty % as a value from .1-.9
 } Waveform;
 
 void make_waveform(Waveform *wave);

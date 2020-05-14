@@ -11,5 +11,4 @@ void PORT1_IRQHandler();
 void TA0_0_IRQHandler();
 void TA0_N_IRQHandler();
 
-
 #endif /* A5_H_ */
