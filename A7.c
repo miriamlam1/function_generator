@@ -8,6 +8,8 @@ P4.1*/
 #include "A5.h"
 #include "P2.h"
 
+volatile uint16_t volts_list[SINETABLESIZE];
+
 void sawtooth(uint16_t current_freq){
     data = (TIMER_A0->R * THREEV) / current_freq;
     sendto_DAC(data);
@@ -24,12 +26,24 @@ void triangle(){
 }
 
 void sine(uint16_t current_freq){
-    if (global_toggle == 0){ //direction up
-        data = sin((TIMER_A0->R)/current_freq);
-        sendto_DAC(data);
+    static uint16_t i = 0;
+    if (i < SINETABLESIZE){
+        sendto_DAC(volts_list[i]);
+        i += 150000/current_freq; // current hz / 10
     } else {
-        data = sin((TIMER_A0->R)/current_freq);
-        sendto_DAC(data);
+        i = 0;
+        sendto_DAC(volts_list[i]);
+    }
+}
+
+void sine_list_maker()
+{
+    int i;
+    int voltage;
+    for(i = 0; i < SINETABLESIZE; i++)
+    {
+        voltage = ONEHALFV * sin((i * 2 * M_PI)/ SINETABLESIZE) + ONEHALFV;
+        volts_list[i] = voltage;
     }
 }
 

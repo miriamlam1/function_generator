@@ -8,7 +8,9 @@
 
 #define freq_50Hz 30000 // 20 ms
 #define freq_100Hz 15000 // 10 ms
+#define freq_150Hz 10000
 #define freq_200Hz 7500 // 5 ms
+#define freq_250Hz 6000
 #define freq_300Hz 5000 // 3.333 ms
 #define freq_400Hz 3750 // 2.5 ms
 #define freq_500Hz 3000 // 2 ms

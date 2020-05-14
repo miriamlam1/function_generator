@@ -8,13 +8,18 @@
 #include "msp.h"
 
 #define THREEV 3724 //4096/3.3 *3
+#define ONEHALFV 1862
 #define NOTCS BIT1
 #define SCLK BIT6
 #define MOSI BIT5
 #define GAIN BIT5
 #define SHDN BIT4
 #define INCREMENT 10
+#define SINETABLESIZE 970
 
+extern volatile uint16_t volts_list[SINETABLESIZE];
+
+void sine_list_maker();
 void sawtooth(uint16_t current_freq);
 void sine(uint16_t current_freq);
 void triangle();

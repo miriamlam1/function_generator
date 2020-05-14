@@ -16,6 +16,8 @@ void main()
                      .waveform = SQUARE
     };
 
+    sine_list_maker();
+
     uint8_t button;
     while(1){
         button = getKeyVal();           // poll for keypress
