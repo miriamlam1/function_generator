@@ -11,12 +11,11 @@ P4.1*/
 volatile uint16_t volts_list[SINETABLESIZE];
 
 void sawtooth(uint16_t current_freq){
-    data = (TIMER_A0->R * THREEV) / current_freq;
-    sendto_DAC(data);
+    sendto_DAC((TIMER_A0->R * THREEV) / current_freq);
 }
 
 void sine(uint16_t current_freq){
-    data = (TIMER_A0->R)/current_freq;
+    data = (TIMER_A0->R)*SINETABLESIZE/current_freq;
     sendto_DAC(volts_list[data]);
 }
 
@@ -31,7 +30,7 @@ void sine_list_maker(){
     }
 }
 
-// generates a 2vpp square wave 20 ms period 1v offset
+// generates a square wave from timerA
 void square(){
     if (global_toggle == 0){
         sendto_DAC(0);
@@ -40,6 +39,7 @@ void square(){
     }
 }
 
+// generates a triangle
 void triangle(){
     if (global_toggle == 0){ //direction up
         data = (TIMER_A0->R * 2482) / 30000;

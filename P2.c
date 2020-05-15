@@ -28,19 +28,19 @@ void waveform_vars(uint8_t button, Waveform *wave){
             wave-> waveform = SAWTOOTH;
             break;
         case BUTTON_STAR: // decreasing duty
-            if ((wave-> duty) > .1)
-                wave-> duty -= .1;
+            if ((wave-> duty) > 1)
+                wave-> duty -= 1;
             break;
         case BUTTON0: // resets duty
-            wave-> duty = .5;
+            wave-> duty = 5;
             break;
         case BUTTON_POUND: // increases duty
-            if ((wave-> duty) < .9)
-                wave-> duty += .1;
+            if ((wave-> duty) < 9)
+                wave-> duty += 1;
             break;
     }
     TIMER_A0->CCR[0] = wave -> current_freq;
-    TIMER_A0->CCR[1] = (wave -> current_freq) * (1-(wave -> duty));
+    TIMER_A0->CCR[1] = (wave -> current_freq)*(wave->duty)/10;
 }
 
 void make_waveform(Waveform *wave){

@@ -14,16 +14,15 @@ void main()
     sine_list_maker();
 
     Waveform wave = {.current_freq = freq_100Hz,
-                     .duty = .5,
+                     .duty = 5,
                      .waveform = SQUARE
     };
-
 
     uint8_t button;
     while(1){
         button = getKeyVal();           // poll for keypress
         if(button != NO_BUTTON_PRESS){  // key was pressed
-            waveform_vars(button, &wave);
+            waveform_vars(button, &wave); // change wave vals from button
             while(getKeyVal()!=NO_BUTTON_PRESS){
                 make_waveform(&wave); // wait for depress
             }

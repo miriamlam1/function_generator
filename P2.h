@@ -23,7 +23,7 @@ typedef struct
 {
    uint16_t current_freq; // frequency that is #def as ccr value
    uint8_t waveform; // waveform type: sq, saw, sine
-   float duty; // duty % as a value from .1-.9
+   uint8_t duty; // duty % as a value from .1-.9
 } Waveform;
 
 void make_waveform(Waveform *wave);

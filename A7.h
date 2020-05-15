@@ -15,7 +15,7 @@
 #define GAIN BIT5
 #define SHDN BIT4
 #define INCREMENT 10
-#define SINETABLESIZE 970
+#define SINETABLESIZE 1000
 
 extern volatile uint16_t volts_list[SINETABLESIZE];
 
