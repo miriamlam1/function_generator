@@ -13,6 +13,12 @@ void main()
     DAC_init();
     sine_list_maker();
 
+    /*
+    TIMER_A0->CCR[1] = 9000;
+    while(1){
+        square();
+    }*/
+
     Waveform wave = {.current_freq = freq_100Hz,
                      .duty = 5,
                      .waveform = SQUARE

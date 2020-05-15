@@ -14,7 +14,7 @@ void timer_A_init(){
     TIMER_A0->CCTL[1] = TIMER_A_CCTLN_CCIE;
 
     TIMER_A0->CCR[0] = 30000;
-    TIMER_A0->CCR[1] = 15000; //15000
+    TIMER_A0->CCR[1] = 3000; //15000
 
     TIMER_A0->CTL = TIMER_A_CTL_TASSEL_2 | // SMCLK
                     TIMER_A_CTL_MC_1;      // UP MODE
