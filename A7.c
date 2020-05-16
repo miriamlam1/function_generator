@@ -2,11 +2,7 @@
     UCB0SIMO = P1.6
     UCB0CLK = P1.5
 P4.1*/
-#include <math.h>
-#include "msp.h"
 #include "A7.h"
-#include "A5.h"
-#include "P2.h"
 
 volatile uint16_t volts_list[SINETABLESIZE];
 

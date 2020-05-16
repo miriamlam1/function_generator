@@ -1,6 +1,4 @@
-#include "msp.h"
 #include "A3.h"
-#include "A2.h"
 
 void Clear_LCD(){
     command_LCD(0x01);

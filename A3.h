@@ -1,6 +1,9 @@
 #ifndef A3_H_
 #define A3_H_
 
+#include "A2.h"
+#include "msp.h"
+
 #define PORT_RS_OUT (P3) //RS 3.0 (0=instruction 1= data)
 #define PORT_RW_OUT (P3) //read/write 3.2 (0=write 1= read)
 #define PORT_E_OUT (P3) //enable 3.3

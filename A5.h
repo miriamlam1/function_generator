@@ -1,9 +1,12 @@
 
 #ifndef A5_H_
 #define A5_H_
-#include "msp.h"
 
-extern volatile uint8_t global_toggle;
+#include "msp.h"
+#include "A7.h"
+#include "A2.h"
+
+extern volatile uint16_t global_toggle;
 extern volatile uint16_t data;
 
 void timer_A_init();

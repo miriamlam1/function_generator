@@ -6,6 +6,9 @@
 #define A7_H_
 
 #include "msp.h"
+#include "A5.h"
+#include "P2.h"
+#include <math.h>
 
 #define THREEV 3724 //4096/3.3 *3
 #define ONEHALFV 1862
