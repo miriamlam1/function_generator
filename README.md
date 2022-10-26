@@ -1,4 +1,4 @@
 # function_generator
 
-if you copy my work,
-you die
+pls no copy
+instead ask me for help mlam27@calpoly.edu
